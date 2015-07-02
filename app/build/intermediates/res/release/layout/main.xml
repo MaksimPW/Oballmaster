@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- Name Label -->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="529dp"
+        android:id="@+id/MenuView"/>
+    <!-- Description Label -->
+    <!-- Price Label -->
+
+</LinearLayout><!-- From: file:/C:/Users/Max/AndroidStudioProjects/Android-Json-Parsing-Code-Sample-master/app/src/main/res/layout/main.xml -->

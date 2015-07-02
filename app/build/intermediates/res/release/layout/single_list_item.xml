@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <!-- Name Label -->
+
+    <TextView
+        android:id="@+id/TextViewForName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#43bd00"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="6dip"
+        android:paddingBottom="2dip"
+        android:gravity="center_horizontal"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/GamesView"
+        />
+    <!-- Description Label -->
+    <!-- Price Label -->
+
+</LinearLayout><!-- From: file:/C:/Users/Max/AndroidStudioProjects/Android-Json-Parsing-Code-Sample-master/app/src/main/res/layout/single_list_item.xml -->

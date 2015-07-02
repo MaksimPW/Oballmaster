@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.tag.jsonparsing.SearchActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Поиск по Oball"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Поиск"
+        android:id="@+id/buttonSearch"
+        android:onClick="OnClick"
+        android:layout_below="@+id/editText"
+        android:layout_alignRight="@+id/MyGamesButton"
+        android:layout_alignLeft="@+id/MyGamesButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AutBut"
+        android:src="@drawable/pic1"
+        android:background="@android:color/black"
+        android:onClick="OnImgClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LogoutButton"
+        android:background="@android:color/black"
+        android:src="@drawable/logout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Мои игры"
+        android:id="@+id/MyGamesButton"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:onClick="myGamesClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Игры друзей"
+        android:id="@+id/FriendGamesButton"
+        android:layout_below="@+id/MyGamesButton"
+        android:layout_alignRight="@+id/MyGamesButton"
+        android:layout_alignLeft="@+id/MyGamesButton"
+        android:onClick="FriendGamesClick" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сменить пользователя"
+        android:id="@+id/ChangeUserButton"
+        android:layout_below="@+id/FriendGamesButton"
+        android:layout_alignRight="@+id/FriendGamesButton"
+        android:layout_alignLeft="@+id/FriendGamesButton" />
+
+</RelativeLayout>

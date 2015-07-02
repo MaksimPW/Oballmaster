@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/maksimpw/Рабочий стол/Oballmaster/app/build/intermediates/exploded-aar/Oballmaster/androidVkSdk/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2d0a9374f474ae48848f9a812f49092267752a8c">
+        <dex dex="/home/maksimpw/Рабочий стол/Oballmaster/app/build/intermediates/pre-dexed/debug/classes-676c6d0ab864f80822dc906198ef22d1b5147c62.jar" />
+    </item>
+
+</items>
