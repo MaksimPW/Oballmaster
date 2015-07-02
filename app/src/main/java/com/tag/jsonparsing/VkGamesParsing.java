@@ -107,14 +107,14 @@ public class VkGamesParsing extends ListActivity {
         final String LOG_TAG = "myLogs";
 
         public DBHelper(Context context) {
-            // конструктор суперкласса
+            //
             super(context, "myDB", null, 1);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.d(LOG_TAG, "--- onCreate database ---");
-            // создаем таблицу с полями
+            // create table
             db.execSQL("create table mytable ("
                     + "TAG_NAME text,"
                     + "TAG_ID integer primary key" + ");");
