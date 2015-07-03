@@ -15,11 +15,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class SavedBDActivity extends Activity {
+public class SavedDBActivity extends Activity {
     final String LOG_TAG = "myLogs";
 
     final Uri CONTACT_URI = Uri
-            .parse("content://ru.startandroid.providers.AdressBook/contacts");
+            .parse("content://com.tag.jsonparsing.AdressBook/contacts");
 
     final String CONTACT_NAME = "name";
     final String CONTACT_EMAIL = "email";
@@ -28,7 +28,7 @@ public class SavedBDActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.saved_db_activity);
 
         Cursor cursor = getContentResolver().query(CONTACT_URI, null, null,
                 null, null);
@@ -39,8 +39,8 @@ public class SavedBDActivity extends Activity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2, cursor, from, to);
 
-       // ListView lvContact = (ListView) findViewById(R.id.lvContact);
-       // lvContact.setAdapter(adapter);
+       //// ListView lvContact = (ListView) findViewById(R.id.lvContact);
+       //// lvContact.setAdapter(adapter);
     }
 
     public void onClickInsert(View v) {
@@ -67,7 +67,7 @@ public class SavedBDActivity extends Activity {
     }
 
     public void onClickError(View v) {
-        Uri uri = Uri.parse("content://ru.startandroid.providers.AdressBook/phones");
+        Uri uri = Uri.parse("content://com.tag.jsonparsing.AdressBook/phones");
         try {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
         } catch (Exception ex) {
