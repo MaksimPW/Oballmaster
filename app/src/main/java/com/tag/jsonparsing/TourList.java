@@ -51,6 +51,8 @@ public class TourList extends ListActivity {
 
 
 
+
+
 		if (json != null) {
 			try {
 
@@ -60,6 +62,7 @@ public class TourList extends ListActivity {
 
 					SQLiteDatabase db = dbHelper.getWritableDatabase();
 					Log.d(LOG_TAG, "--- Insert in mytable: ---");
+					//db.execSQL("DELETE FROM `t_table`;");
 
 					JSONObject c = json.getJSONObject(i);
 
@@ -76,8 +79,6 @@ public class TourList extends ListActivity {
 
 					map.put(TAG_NAME, name);
 					map.put(TAG_ID, id);
-
-
 
 					contactList.add(map);
 				}
@@ -134,22 +135,22 @@ public class TourList extends ListActivity {
 	}
 
 	class DBHelper extends SQLiteOpenHelper {
-		//final String LOG_TAG = "myLogs";
+
 
 		public DBHelper(Context context) {
-			// ����������� �����������
+
 			super(context, "myDB", null, 1);
 			Log.d(LOG_TAG, "--- onCreate database myDB ---");
+
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			Log.d(LOG_TAG, "--- onCreate database ---");
-			// ������� ������� � ������
+			// tour_table create
 			db.execSQL("create table t_table ("
 					+ "id integer primary key,"
-					+ "name text,"
-					+ "email text" + ");");
+					+ "name text," + ");");
 		}
 
 		@Override

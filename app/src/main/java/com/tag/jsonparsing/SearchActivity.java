@@ -21,6 +21,7 @@ public class SearchActivity extends Activity {
     Button MyGamesButton;
     Button FriendGamesButton;
     Button ChangeUserButton;
+    Button SavedDBButton;
 
     Account account=new Account();
     Api api;
@@ -55,6 +56,8 @@ public class SearchActivity extends Activity {
         logoutButton.setOnClickListener(logoutClick);
 
         MyGamesButton= (Button) findViewById(R.id.MyGamesButton);
+
+        SavedDBButton= (Button) findViewById(R.id.SavedDBButton);
 
         FriendGamesButton= (Button) findViewById(R.id.FriendGamesButton);
 
@@ -103,6 +106,7 @@ public class SearchActivity extends Activity {
             MyGamesButton.setVisibility(View.VISIBLE);
             FriendGamesButton.setVisibility(View.VISIBLE);
             ChangeUserButton.setVisibility(View.VISIBLE);
+
         }else{
             authorizeButton.setVisibility(View.VISIBLE);
            logoutButton.setVisibility(View.GONE);
@@ -139,6 +143,11 @@ public class SearchActivity extends Activity {
         Intent intent = new Intent(this, VkGamesParsing.class);
         String myGames = "http://oball.ru/mobile/get_friend_games?ids=" + Long.toString(account.user_id);
         intent.putExtra("func",myGames);
+        startActivity(intent);
+    }
+
+    public void savedDBClick(View view) {
+        Intent intent = new Intent(this, SavedDBActivity.class);
         startActivity(intent);
     }
 

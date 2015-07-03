@@ -22,8 +22,7 @@
         android:id="@+id/buttonSearch"
         android:onClick="OnClick"
         android:layout_below="@+id/editText"
-        android:layout_alignRight="@+id/MyGamesButton"
-        android:layout_alignLeft="@+id/MyGamesButton" />
+        android:layout_alignLeft="@+id/AutBut" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -58,28 +57,34 @@
         android:layout_height="wrap_content"
         android:text="Мои игры"
         android:id="@+id/MyGamesButton"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:onClick="myGamesClick" />
+        android:onClick="myGamesClick"
+        android:layout_below="@+id/FriendGamesButton"
+        android:layout_alignLeft="@+id/SavedDBButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сохранненые игры"
+        android:id="@+id/SavedDBButton"
+        android:onClick="savedDBClick"
+        android:layout_below="@+id/MyGamesButton"
+        android:layout_alignLeft="@+id/FriendGamesButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Игры друзей"
         android:id="@+id/FriendGamesButton"
-        android:layout_below="@+id/MyGamesButton"
-        android:layout_alignRight="@+id/MyGamesButton"
-        android:layout_alignLeft="@+id/MyGamesButton"
-        android:onClick="FriendGamesClick" />
+        android:onClick="FriendGamesClick"
+        android:layout_below="@+id/buttonSearch"
+        android:layout_alignLeft="@+id/buttonSearch" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Сменить пользователя"
         android:id="@+id/ChangeUserButton"
-        android:layout_below="@+id/FriendGamesButton"
-        android:layout_alignRight="@+id/FriendGamesButton"
-        android:layout_alignLeft="@+id/FriendGamesButton" />
+        android:layout_below="@+id/SavedDBButton"
+        android:layout_alignLeft="@+id/MyGamesButton" />
 
 </RelativeLayout>

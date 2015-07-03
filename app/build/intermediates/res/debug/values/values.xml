@@ -9,7 +9,11 @@
     <string name="Name">Oball manager</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">Oball manager</string>
+    <string name="delete">Delete</string>
+    <string name="error">Error</string>
     <string name="hello">Hello World, AndroidJSONParsingActivity!</string>
     <string name="hello_world">Hello world!</string>
+    <string name="insert">Insert</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="update">Update</string>
 </resources>
