@@ -23,11 +23,11 @@
         android:label="@string/Name" >
         <activity
             android:name=".TourList"
-            android:label="@string/app_name" >
+            android:label="@string/Atour" >
         </activity>
         <activity
             android:name=".VkGamesParsing"
-            android:label="@string/app_name" >
+            android:label="@string/Amygames" >
         </activity>
         <activity
             android:name=".FriendList"
@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".SavedDBActivity"
-            android:label="@string/app_name" >
+            android:label="@string/Asaved" >
         </activity>
         <!-- Single List Item View -->
         <activity

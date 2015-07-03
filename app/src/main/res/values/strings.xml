@@ -14,4 +14,11 @@
     <string name="delete">Delete</string>
     <string name="error">Error</string>
 
+    <string name="Atour">Oball manager|Search</string>
+    <string name="Amygames">Oball manage|MyGames</string>
+    <string name="Asaved">Oball manage|MyBD</string>
+
+
+
+
 </resources>

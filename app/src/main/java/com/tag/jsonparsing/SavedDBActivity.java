@@ -39,8 +39,8 @@ public class SavedDBActivity extends Activity {
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2, cursor, from, to);
 
-       //// ListView lvContact = (ListView) findViewById(R.id.lvContact);
-       //// lvContact.setAdapter(adapter);
+        ListView lvContact = (ListView) findViewById(R.id.lvContact);
+        lvContact.setAdapter(adapter);
     }
 
     public void onClickInsert(View v) {
