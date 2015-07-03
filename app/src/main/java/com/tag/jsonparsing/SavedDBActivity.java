@@ -19,10 +19,10 @@ public class SavedDBActivity extends Activity {
     final String LOG_TAG = "myLogs";
 
     final Uri CONTACT_URI = Uri
-            .parse("content://com.tag.jsonparsing.AdressBook/contacts");
+            .parse("content://com.tag.jsonparsing.TableTourList/contacts");
 
-    final String CONTACT_NAME = "name";
-    final String CONTACT_EMAIL = "email";
+    final String CONTACT_NAME = "t_name";
+    //final String CONTACT_EMAIL = "email";
 
     /** Called when the activity is first created. */
     @Override
@@ -34,7 +34,7 @@ public class SavedDBActivity extends Activity {
                 null, null);
         startManagingCursor(cursor);
 
-        String from[] = { "name", "email" };
+        String from[] = { "_id", "t_name" };
         int to[] = { android.R.id.text1, android.R.id.text2 };
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2, cursor, from, to);
@@ -43,10 +43,11 @@ public class SavedDBActivity extends Activity {
         lvContact.setAdapter(adapter);
     }
 
+    /*
     public void onClickInsert(View v) {
         ContentValues cv = new ContentValues();
         cv.put(CONTACT_NAME, "name 4");
-        cv.put(CONTACT_EMAIL, "email 4");
+        //cv.put(CONTACT_EMAIL, "email 4");
         Uri newUri = getContentResolver().insert(CONTACT_URI, cv);
         Log.d(LOG_TAG, "insert, result Uri : " + newUri.toString());
     }
@@ -54,7 +55,7 @@ public class SavedDBActivity extends Activity {
     public void onClickUpdate(View v) {
         ContentValues cv = new ContentValues();
         cv.put(CONTACT_NAME, "name 5");
-        cv.put(CONTACT_EMAIL, "email 5");
+        //cv.put(CONTACT_EMAIL, "email 5");
         Uri uri = ContentUris.withAppendedId(CONTACT_URI, 2);
         int cnt = getContentResolver().update(uri, cv, null, null);
         Log.d(LOG_TAG, "update, count = " + cnt);
@@ -74,5 +75,6 @@ public class SavedDBActivity extends Activity {
             Log.d(LOG_TAG, "Error: " + ex.getClass() + ", " + ex.getMessage());
         }
 
-    }
+
+    } */
 }

@@ -62,7 +62,7 @@ public class TourList extends ListActivity {
 
 					SQLiteDatabase db = dbHelper.getWritableDatabase();
 					Log.d(LOG_TAG, "--- Insert in mytable: ---");
-					//db.execSQL("DELETE FROM `t_table`;");
+					//db.execSQL("DELETE FROM `table_tour_list`;");
 
 					JSONObject c = json.getJSONObject(i);
 
@@ -71,10 +71,10 @@ public class TourList extends ListActivity {
 					String name = c.getString(TAG_NAME);
 					String id = c.getString(TAG_ID);
 
-					cv.put("id", id);
-					cv.put("name", name);
+					cv.put("_id", id);
+					cv.put("t_name", name);
 
-					long rowID = db.insert("t_table", null, cv);
+					long rowID = db.insert("table_tour_list", null, cv);
 					Log.d(LOG_TAG, "row inserted, ID = " + rowID);
 
 					map.put(TAG_NAME, name);
@@ -147,10 +147,10 @@ public class TourList extends ListActivity {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			Log.d(LOG_TAG, "--- onCreate database ---");
-			// tour_table create
-			db.execSQL("create table t_table ("
-					+ "id integer primary key,"
-					+ "name text," + ");");
+			// table_tour_list create
+			db.execSQL("create table table_tour_list ("
+					+ "_id integer primary key,"
+					+ "t_name text" + ");");
 		}
 
 		@Override

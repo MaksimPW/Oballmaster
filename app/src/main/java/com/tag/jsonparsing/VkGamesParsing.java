@@ -65,7 +65,7 @@ public class VkGamesParsing extends ListActivity {
                 cv.put(TAG_NAME, name);
                 cv.put(TAG_ID, id);
 
-                long rowID = db.insert("mytable",null,cv);
+                long rowID = db.insert("table_tour_list",null,cv);
                 Log.d(LOG_TAG, "row inserted, ID = " + rowID);
 
                 map.put(TAG_NAME, name);
@@ -114,10 +114,10 @@ public class VkGamesParsing extends ListActivity {
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.d(LOG_TAG, "--- onCreate database ---");
-            // create table
-            db.execSQL("create table mytable ("
-                    + "TAG_NAME text,"
-                    + "TAG_ID integer primary key" + ");");
+            // create table_tour_list
+            db.execSQL("create table table_tour_list ("
+                    + "t_name text,"
+                    + "_id integer primary key" + ");");
         }
 
         @Override

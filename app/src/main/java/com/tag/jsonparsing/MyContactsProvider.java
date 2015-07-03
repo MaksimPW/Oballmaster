@@ -21,21 +21,22 @@ public class MyContactsProvider extends ContentProvider {
     static final int DB_VERSION = 1;
 
     // Таблица
-    static final String CONTACT_TABLE = "contacts";
+    static final String CONTACT_TABLE = "table_tour_list";
 
     // Поля
     static final String CONTACT_ID = "_id";
-    static final String CONTACT_NAME = "name";
-    static final String CONTACT_EMAIL = "email";
+    static final String CONTACT_NAME = "t_name";
+    //static final String CONTACT_EMAIL = "email";
 
     // Скрипт создания таблицы
-    static final String DB_CREATE = "create table " + CONTACT_TABLE + "("
-            + CONTACT_ID + " integer primary key autoincrement, "
-            + CONTACT_NAME + " text, " + CONTACT_EMAIL + " text" + ");";
+    static final String DB_CREATE = "create table table_tour_list ("
+            + "_id integer primary key,"
+            + "t_name text" + ");";
+
 
     // // Uri
     // authority
-    static final String AUTHORITY = "com.tag.jsonparsing.AdressBook";
+    static final String AUTHORITY = "com.tag.jsonparsing.TableTourList";
 
     // path
     static final String CONTACT_PATH = "contacts";
@@ -196,11 +197,15 @@ public class MyContactsProvider extends ContentProvider {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DB_CREATE);
             ContentValues cv = new ContentValues();
+
+            /*
             for (int i = 1; i <= 3; i++) {
                 cv.put(CONTACT_NAME, "name " + i);
                 cv.put(CONTACT_EMAIL, "email " + i);
                 db.insert(CONTACT_TABLE, null, cv);
             }
+
+            */
         }
 
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

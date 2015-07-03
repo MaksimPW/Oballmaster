@@ -48,7 +48,7 @@
         </activity>
 
         <provider
-            android:authorities="com.tag.jsonparsing.AdressBook"
+            android:authorities="com.tag.jsonparsing.TableTourList"
             android:name=".MyContactsProvider"
        >
         . . .
