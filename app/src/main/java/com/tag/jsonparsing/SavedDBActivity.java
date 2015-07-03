@@ -7,13 +7,17 @@ package com.tag.jsonparsing;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+
+import java.util.HashMap;
 
 public class SavedDBActivity extends Activity {
     final String LOG_TAG = "myLogs";
@@ -34,13 +38,30 @@ public class SavedDBActivity extends Activity {
                 null, null);
         startManagingCursor(cursor);
 
-        String from[] = { "_id", "t_name" };
-        int to[] = { android.R.id.text1, android.R.id.text2 };
+        String from[] = { "t_name","_id" };
+        int to[] = { R.id.name};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_2, cursor, from, to);
+                R.layout.list_item, cursor, from, to);
 
         ListView lvContact = (ListView) findViewById(R.id.lvContact);
         lvContact.setAdapter(adapter);
+
+        // События нажатия на элемент
+        /*
+        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                HashMap<String, String> map = (HashMap<String, String>) getListAdapter().getItem(position);
+                Intent in = new Intent(getApplicationContext(), SingleVk.class);
+                in.putExtra(TAG_NAME, map.get(TAG_NAME));
+                in.putExtra(TAG_ID, map.get(TAG_ID));
+                startActivity(in);
+
+            }
+        });
+        */
     }
 
     /*
