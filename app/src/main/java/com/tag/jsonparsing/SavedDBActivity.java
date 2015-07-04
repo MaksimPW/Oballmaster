@@ -108,7 +108,7 @@ public class SavedDBActivity extends Activity {
         Uri newUri = getContentResolver().insert(CONTACT_URI, cv);
         Log.d(LOG_TAG, "insert, result Uri : " + newUri.toString());
     }
-
+*/
     public void onClickUpdate(View v) {
         ContentValues cv = new ContentValues();
         cv.put(CONTACT_NAME, "name 5");
@@ -117,7 +117,7 @@ public class SavedDBActivity extends Activity {
         int cnt = getContentResolver().update(uri, cv, null, null);
         Log.d(LOG_TAG, "update, count = " + cnt);
     }
-*/
+
     public void onClickDelete(View v) {
         //Uri uri = ContentUris.withAppendedId(CONTACT_URI, 3);
         //int cnt = getContentResolver().delete(uri, null, null);

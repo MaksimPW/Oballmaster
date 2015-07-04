@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
@@ -101,6 +102,26 @@ public class VkGamesParsing extends ListActivity {
 
             }
         });
+
+
+    }
+
+    public void pushDBSingleTour(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor c = db.query("table_tour_list", null, null, null, null, null, null);
+        if(c!=null&&c. moveToFirst()){
+            do{
+                long id = c.getLong(c.getColumnIndexOrThrow ("_id"));
+                String name  = c.getString(c.getColumnIndexOrThrow ("t_name"));
+                // вытаскиваем список id в обработку добавления singletour
+                Intent in = new Intent(getApplicationContext(),SingleVk.class);
+                in.putExtra(TAG_NAME, id);
+                in.putExtra(TAG_ID, name);
+                startActivity(in);
+
+            }while(c.moveToNext());
+        }
+
     }
 
     class DBHelper extends SQLiteOpenHelper {
