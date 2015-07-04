@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class SingleVk extends Activity {
 
     private static final String TAG_NAME = "t_name";
-    private static final String TAG_ID ="t_id";
+    private static final String TAG_ID ="_id";
     private static final String TAG_TEAMS = "teams";
     private static final String TAG_GAMES ="games";
     private static final String TAG_DATE = "date_time";

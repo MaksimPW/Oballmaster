@@ -7,8 +7,11 @@ package com.tag.jsonparsing;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,11 +31,15 @@ public class SavedDBActivity extends Activity {
     final String CONTACT_NAME = "t_name";
     //final String CONTACT_EMAIL = "email";
 
+    DBHelper dbHelper;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saved_db_activity);
+
+
 
         Cursor cursor = getContentResolver().query(CONTACT_URI, null, null,
                 null, null);
@@ -45,6 +52,35 @@ public class SavedDBActivity extends Activity {
 
         ListView lvContact = (ListView) findViewById(R.id.lvContact);
         lvContact.setAdapter(adapter);
+
+
+        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
+                        + id);
+
+                Intent in = new Intent(getApplicationContext(),SingleVk.class);
+                in.putExtra("_id", id);
+                //in.putExtra("t_name", name);
+                startActivity(in);
+
+            }
+        });
+
+        lvContact.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                Log.d(LOG_TAG, "itemSelect: position = " + position + ", id = "
+                        + id);
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d(LOG_TAG, "itemSelect: nothing");
+            }
+        });
+
 
         // События нажатия на элемент
         /*
@@ -81,15 +117,19 @@ public class SavedDBActivity extends Activity {
         int cnt = getContentResolver().update(uri, cv, null, null);
         Log.d(LOG_TAG, "update, count = " + cnt);
     }
-
+*/
     public void onClickDelete(View v) {
-        Uri uri = ContentUris.withAppendedId(CONTACT_URI, 3);
-        int cnt = getContentResolver().delete(uri, null, null);
-        Log.d(LOG_TAG, "delete, count = " + cnt);
+        //Uri uri = ContentUris.withAppendedId(CONTACT_URI, 3);
+        //int cnt = getContentResolver().delete(uri, null, null);
+        //Log.d(LOG_TAG, "delete, count = " + cnt);
+
+        dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM table_tour_list;");
     }
 
     public void onClickError(View v) {
-        Uri uri = Uri.parse("content://com.tag.jsonparsing.AdressBook/phones");
+        Uri uri = Uri.parse("content://com.tag.jsonparsing.TableTourList/phones");
         try {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
         } catch (Exception ex) {
@@ -97,5 +137,33 @@ public class SavedDBActivity extends Activity {
         }
 
 
-    } */
+    }
+
+    class DBHelper extends SQLiteOpenHelper {
+        final String LOG_TAG = "myLogs";
+
+        public DBHelper(Context context) {
+            //
+            super(context, "myDB", null, 1);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            Log.d(LOG_TAG, "--- onCreate database ---");
+            // create table_tour_list
+            db.execSQL("create table table_tour_list ("
+                    + "t_name text,"
+                    + "_id integer primary key" + ");");
+
+
+            Intent in = new Intent(getApplicationContext(),SavedDBActivity.class);
+            startActivity(in);
+            setContentView(R.layout.saved_db_activity);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    }
 }
