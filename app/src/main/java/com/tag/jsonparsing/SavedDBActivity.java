@@ -126,7 +126,7 @@ public class SavedDBActivity extends Activity {
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM table_tour_list;");
-        db.execSQL("DELETE FROM table_tour;");
+        db.execSQL("DELETE FROM table_tour_single;");
 
 
         Intent in = new Intent(getApplicationContext(),SavedDBActivity.class);
