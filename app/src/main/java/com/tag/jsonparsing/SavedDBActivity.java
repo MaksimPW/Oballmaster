@@ -126,6 +126,11 @@ public class SavedDBActivity extends Activity {
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.execSQL("DELETE FROM table_tour_list;");
+
+        Intent in = new Intent(getApplicationContext(),SavedDBActivity.class);
+        startActivity(in);
+        setContentView(R.layout.saved_db_activity);
+
     }
 
     public void onClickError(View v) {
@@ -155,10 +160,6 @@ public class SavedDBActivity extends Activity {
                     + "t_name text,"
                     + "_id integer primary key" + ");");
 
-
-            Intent in = new Intent(getApplicationContext(),SavedDBActivity.class);
-            startActivity(in);
-            setContentView(R.layout.saved_db_activity);
         }
 
         @Override
