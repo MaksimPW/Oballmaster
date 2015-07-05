@@ -97,6 +97,8 @@ public class SingleMenuItemActivity  extends Activity {
 
         String sName = intent.getStringExtra(TAG_NAME);
 
+        if(sName==null) sName="None";
+
         TextView lblName = (TextView) findViewById(R.id.TextViewForName);
 
         String idName = intent.getStringExtra(TAG_ID);
@@ -193,7 +195,7 @@ public class SingleMenuItemActivity  extends Activity {
         @Override
         public void onCreate(SQLiteDatabase dbSingle) {
             Log.d(LOG_TAG, "--- onCreate database Single  ---");
-            
+
             dbSingle.execSQL("CREATE TABLE `table_tour_single` (`_id`	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,`t_team1`	TEXT,`t_team2`	TEXT,`t_s1`	TEXT,`t_s2`	TEXT,`t_date`	TEXT,`t_status`	TEXT,`trn_id`	INTEGER );");
         }
 

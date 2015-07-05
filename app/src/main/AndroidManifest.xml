@@ -47,16 +47,27 @@
             android:label="@string/app_name" >
         </activity>
 
+        <activity
+            android:name=".SavedDBActivitySingle"
+            android:label="@string/app_name" >
+        </activity>
+
         <provider
             android:authorities="com.tag.jsonparsing.TableTourList"
             android:name=".MyContactsProvider"
        >
         . . .
     </provider>
+        <provider
+            android:authorities="com.tag.jsonparsing.TableTourSingle"
+            android:name=".MyContactsProviderSingle"
+            >
+            . . .
+        </provider>
 
         <activity
             android:name=".SearchActivity"
-            android:label="@string/app_name"
+            android:label="@string/Name"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,7 +77,7 @@
         </activity>
         <activity android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/app_name"
+            android:label="@string/Name"
             />
     </application>
 

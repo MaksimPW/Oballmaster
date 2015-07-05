@@ -60,8 +60,9 @@ public class SavedDBActivity extends Activity {
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
 
-                Intent in = new Intent(getApplicationContext(),SingleVk.class);
+                Intent in = new Intent(getApplicationContext(),SavedDBActivitySingle.class);
                 in.putExtra("_id", id);
+
                 //in.putExtra("t_name", name);
                 startActivity(in);
 
