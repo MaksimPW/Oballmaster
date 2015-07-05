@@ -116,7 +116,7 @@ public class SingleMenuItemActivity  extends Activity {
 
             for(int i = 0; i < games.length(); i++) {
                 ContentValues cv = new ContentValues();
-                SQLiteDatabase db = dbHelperSingle.getWritableDatabase();
+                SQLiteDatabase dbSingle = dbHelperSingle.getWritableDatabase();
 
                 JSONObject c = games.getJSONObject(i);
 
@@ -158,9 +158,14 @@ public class SingleMenuItemActivity  extends Activity {
                 contactList.add(map);
 
                 //Добавляем данные в DB
-                cv.put("trn_id",TAG_ID);
-                long rowID = db.insert("table_tour_single", null, cv);
+                cv.put("trn_id", TAG_ID);
+                //Log.d(LOG_TAG, "CREATE TABLE SINGLE" );
+                //dbSingle.execSQL("DROP TABLE IF EXISTS `table_tour_single`;" );
+                //Log.d(LOG_TAG, "CREATE TABLE DROPSINGLE" );
+                dbSingle.execSQL("CREATE TABLE `table_tour_single` (`_id`	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,`t_team1`	TEXT,`t_team2`	TEXT,`t_s1`	TEXT,`t_s2`	TEXT,`t_date`	TEXT,`t_status`	TEXT,`trn_id`	INTEGER );");
+                long rowID = dbSingle.insert("table_tour_single", null, cv);
                 Log.d(LOG_TAG, "row inserted, ID = " + rowID);
+                //dbSingle.update("table_tour_single", null, cv);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -181,28 +186,19 @@ public class SingleMenuItemActivity  extends Activity {
         public DBHelperSingle(Context context) {
 
             super(context, "myDB", null, 1);
-            Log.d(LOG_TAG, "--- onCreate database myDB ---");
+            Log.d(LOG_TAG, "--- onCreate database myDBSingle ---" );
 
         }
 
         @Override
-        public void onCreate(SQLiteDatabase db) {
-            Log.d(LOG_TAG, "--- onCreate database ---");
-            // table_tour_list create
-            db.execSQL("create table table_tour_single ("
-                    + "_id integer primary key AUTOINCREMENT,"
-                    + "t_team1 text,"
-                    + "t_team2 text,"
-                    + "t_s1 text,"
-                    + "t_s2 text,"
-                    + "t_date text,"
-                    + "t_status text,"
-                    + "trn_id id,"
-                    + "t_name text" + ");");
+        public void onCreate(SQLiteDatabase dbSingle) {
+            Log.d(LOG_TAG, "--- onCreate database Single  ---");
+            
+            dbSingle.execSQL("CREATE TABLE `table_tour_single` (`_id`	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,`t_team1`	TEXT,`t_team2`	TEXT,`t_s1`	TEXT,`t_s2`	TEXT,`t_date`	TEXT,`t_status`	TEXT,`trn_id`	INTEGER );");
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        public void onUpgrade(SQLiteDatabase dbSingle, int oldVersion, int newVersion) {
 
         }
     }
