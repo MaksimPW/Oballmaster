@@ -15,8 +15,17 @@
     <string name="error">Error</string>
 
     <string name="Atour">Oball manager|Search</string>
-    <string name="Amygames">Oball manage|MyGames</string>
-    <string name="Asaved">Oball manage|MyBD</string>
+    <string name="Amygames">Oball manager|My Games</string>
+    <string name="Asaved">Oball manager|Saved Games</string>
+    <string name="Afriendgames">Oball manager|Friends Games</string>
+
+
+    <string name="AChangeUserButton">Change User</string>
+    <string name="ASavedGames">Saved Games</string>
+    <string name="AMyGames">My Games</string>
+    <string name="AFriendGames">Friends Games</string>
+    <string name="ASearch">Search</string>
+    <string name="ASearchInOball">Search in Oball</string>
 
 
 

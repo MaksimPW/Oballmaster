@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Поиск по Oball"
+        android:text="@string/ASearchInOball"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Поиск"
+        android:text="@string/ASearch"
         android:id="@+id/buttonSearch"
         android:onClick="OnClick"
         android:layout_below="@+id/editText"
@@ -57,7 +57,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Игры друзей"
+        android:text="@string/AFriendGames"
         android:id="@+id/FriendGamesButton"
         android:onClick="FriendGamesClick"
         android:layout_below="@+id/buttonSearch"
@@ -67,7 +67,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мои игры"
+        android:text="@string/AMyGames"
         android:id="@+id/MyGamesButton"
         android:onClick="myGamesClick"
         android:layout_below="@+id/FriendGamesButton"
@@ -77,7 +77,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сохранненые игры"
+        android:text="@string/ASavedGames"
         android:id="@+id/SavedDBButton"
         android:onClick="savedDBClick"
         android:layout_below="@+id/MyGamesButton"
@@ -87,7 +87,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сменить пользователя"
+        android:text="@string/AChangeUserButton"
         android:id="@+id/ChangeUserButton"
         android:layout_below="@+id/SavedDBButton"
         android:layout_alignRight="@+id/SavedDBButton"
