@@ -1,8 +1,13 @@
 package com.tag.jsonparsing;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,6 +36,9 @@ public class SingleMenuItemActivity  extends Activity {
     private String TAG_S2="s2";
     JSONArray games = null;
 
+    final String LOG_TAG = "myLogs";
+    DBHelper dbHelper;
+
     String ReturnName (String t_id){
         JSONArray teams = null;
         final String TAG_NAME2 = "name";
@@ -46,6 +54,7 @@ public class SingleMenuItemActivity  extends Activity {
 
         try {
             teams = json.getJSONArray(TAG_TEAMS);
+
 
             for(int i = 0; i < teams.length(); i++){
                 JSONObject c = teams.getJSONObject(i);
@@ -79,6 +88,9 @@ public class SingleMenuItemActivity  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_list_item);
 
+        dbHelper = new DBHelper(this);
+
+
         Toast.makeText(this, "Please wait", Toast.LENGTH_LONG).show();
 
         Intent intent = getIntent();
@@ -103,6 +115,9 @@ public class SingleMenuItemActivity  extends Activity {
             games = json.getJSONArray(TAG_GAMES);
 
             for(int i = 0; i < games.length(); i++) {
+                ContentValues cv = new ContentValues();
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
                 JSONObject c = games.getJSONObject(i);
 
                 String team1 = c.getString(TAG_TEAM1);
@@ -114,22 +129,38 @@ public class SingleMenuItemActivity  extends Activity {
                 String s2 = c.getString(TAG_S2);
                 String status =c.getString(TAG_STATUS);
 
+
                 HashMap<String, String> map = new HashMap<String, String>();
 
                 map.put(TAG_TEAM1, TeamName1 + "  vs  " +TeamName2);
+
+                cv.put("t_team1", TeamName1);
+                cv.put("t_team2", TeamName2);
+
                 if (!date.equals("0000-00-00 00:00:00")) {
                     map.put(TAG_DATE, " " + date);
+                    cv.put("t_date",date);
                 }else{
                     map.put(TAG_DATE,"Unknown date");
+                    cv.put("t_date","Unknown date");
                 }
 
                 if (status.equals("2")) {
                     map.put(TAG_S1, " " + s1 + " -- " + s2);
+                    cv.put("t_s1",s1);
+                    cv.put("t_s2",s2);
                 }else {
                     map.put(TAG_S1,"The game is not played");
+                    cv.put("t_s1","--");
+                    cv.put("t_s2","--");
                 }
 
                 contactList.add(map);
+
+                //Добавляем данные в DB
+                cv.put("trn_id",TAG_ID);
+                long rowID = db.insert("table_tour_single", null, cv);
+                Log.d(LOG_TAG, "row inserted, ID = " + rowID);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -143,5 +174,38 @@ public class SingleMenuItemActivity  extends Activity {
                 R.id.TeamName1, R.id.date,R.id.Score});
         gamesview.setAdapter(adapter);
         };
+
+    class DBHelper extends SQLiteOpenHelper {
+
+
+        public DBHelper(Context context) {
+
+            super(context, "myDB", null, 1);
+            Log.d(LOG_TAG, "--- onCreate database myDB ---");
+
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            Log.d(LOG_TAG, "--- onCreate database ---");
+            // table_tour_list create
+            db.execSQL("create table table_tour_single ("
+                    + "_id integer primary key AUTOINCREMENT,"
+                    + "t_team1 text,"
+                    + "t_team2 text,"
+                    + "t_s1 text,"
+                    + "t_s2 text,"
+                    + "t_date text,"
+                    + "t_status text,"
+                    + "trn_id id,"
+                    + "t_name text" + ");");
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    }
+
 
     }
