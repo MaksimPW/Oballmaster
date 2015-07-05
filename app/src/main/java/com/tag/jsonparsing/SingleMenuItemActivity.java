@@ -37,7 +37,7 @@ public class SingleMenuItemActivity  extends Activity {
     JSONArray games = null;
 
     final String LOG_TAG = "myLogs";
-    DBHelper dbHelper;
+    DBHelperSingle dbHelperSingle;
 
     String ReturnName (String t_id){
         JSONArray teams = null;
@@ -88,7 +88,7 @@ public class SingleMenuItemActivity  extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_list_item);
 
-        dbHelper = new DBHelper(this);
+        dbHelperSingle = new DBHelperSingle(this);
 
 
         Toast.makeText(this, "Please wait", Toast.LENGTH_LONG).show();
@@ -116,7 +116,7 @@ public class SingleMenuItemActivity  extends Activity {
 
             for(int i = 0; i < games.length(); i++) {
                 ContentValues cv = new ContentValues();
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                SQLiteDatabase db = dbHelperSingle.getWritableDatabase();
 
                 JSONObject c = games.getJSONObject(i);
 
@@ -175,10 +175,10 @@ public class SingleMenuItemActivity  extends Activity {
         gamesview.setAdapter(adapter);
         };
 
-    class DBHelper extends SQLiteOpenHelper {
+    class DBHelperSingle extends SQLiteOpenHelper {
 
 
-        public DBHelper(Context context) {
+        public DBHelperSingle(Context context) {
 
             super(context, "myDB", null, 1);
             Log.d(LOG_TAG, "--- onCreate database myDB ---");
